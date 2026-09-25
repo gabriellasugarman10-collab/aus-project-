@@ -1,0 +1,13 @@
+/* Small extras theme.json can't express. Keep this file short. */
+html { scroll-behavior: smooth; }
+.wp-site-blocks > header { position: sticky; top: 0; z-index: 10; backdrop-filter: blur(8px); }
+.is-style-card { border: 1px solid var(--wp--preset--color--border); border-radius: 16px; padding: var(--wp--preset--spacing--40); background: var(--wp--preset--color--surface); height: 100%; }
+.wp-element-button, .wp-block-button__link { transition: opacity .15s ease; }
+.wp-element-button:hover, .wp-block-button__link:hover { opacity: .88; }
+:focus-visible { outline: 2px solid var(--wp--preset--color--primary); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+/* Full-bleed sections stack flush, like the prototype's section bands. */
+.wp-block-post-content > .alignfull,
+.wp-site-blocks > main,
+.wp-site-blocks > footer { margin-block: 0; }
+.wp-site-blocks > main > .wp-block-post-content { margin-block-start: 0; }
