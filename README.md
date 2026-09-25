@@ -1,4 +1,4 @@
-# AUS — WordPress rebuild of the Lovable prototype
+# Bound for Oz — WordPress site
 
 Local WordPress (Docker) + a custom block theme, packaged so it can move to a new host and domain with one export and one search-replace.
 
@@ -10,9 +10,12 @@ Source prototype: `https://lovable.dev/preview/pwXuWiUQaiqadL7X8DbzNoHuaLRQNxUz`
 |---|---|
 | Local stack (WP + MariaDB + WP-CLI) | ✅ |
 | Block theme `theme/aus` (header, footer, 404, page, post, archive) | ✅ tested on WP 6.x/7.x, desktop + mobile |
-| Pages: Home, About, Services, Contact (as editable patterns) | ✅ placeholder copy |
-| Lovable design + copy ported | ⏳ blocked — prototype wasn't reachable from the build environment |
-| Contact form | ⏳ add a form plugin on the final host |
+| Pages: Home, The Pack, About (approved Lovable copy) | ✅ |
+| Pack contents: Jordan's 10 sections as an accordion | ✅ |
+| Book, Checkout, Free-50 pages | ⏳ placeholders — see `COPY.md` → Missing before launch |
+| Design | ✅ matched to Jordan's screenshot; hex values estimated, swap for Lovable's tokens if they differ |
+
+Copy changes and open items for Jordan: **`COPY.md`**.
 
 ## Run locally
 
@@ -53,3 +56,7 @@ docker-compose.yml   local stack
 scripts/             setup · export · package-theme · migrate-domain
 theme/aus/           the theme (only thing you deploy besides DB + uploads)
 ```
+
+## Changing copy
+
+All text lives in `tools/build-patterns.py`. Edit it, run `python3 tools/build-patterns.py`, and the theme patterns regenerate. After launch, edit in WP Admin instead.

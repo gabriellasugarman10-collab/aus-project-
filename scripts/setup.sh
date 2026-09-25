@@ -37,10 +37,13 @@ page() { # slug title pattern
   echo "$id"
 }
 
+# Slugs mirror the Lovable routes so every CTA link survives the move.
 home=$(page home Home home)
+page pack "The Pack" pack >/dev/null
 page about About about >/dev/null
-page services Services services >/dev/null
-page contact Contact contact >/dev/null
+page book "Book a free call" book >/dev/null
+page checkout Checkout checkout >/dev/null
+page free "Get the Pack free" free >/dev/null
 
 wp option update show_on_front page
 wp option update page_on_front "$home"
