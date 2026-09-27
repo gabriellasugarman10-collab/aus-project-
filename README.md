@@ -17,6 +17,12 @@ Source prototype: `https://lovable.dev/preview/pwXuWiUQaiqadL7X8DbzNoHuaLRQNxUz`
 
 Copy changes and open items for Jordan: **`COPY.md`**.
 
+## Preview in your browser (no install, no login needed)
+
+**[Open Bound for Oz in WordPress Playground](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/gabriellasugarman10-collab/aus-project-/claude/vibe-code-wordpress-migration-r4b034/blueprint.json)**
+
+A full WordPress runs in your browser tab, already logged in as admin (`admin` / `password`), with the theme and all pages set up from `blueprint.json`. Changes are thrown away when you close the tab, so it's for looking and trying, not saving.
+
 ## Run locally
 
 Needs Docker Desktop.
