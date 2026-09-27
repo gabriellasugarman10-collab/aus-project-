@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Placeholder: beachside suburb">
-  <rect width="800" height="600" fill="#CFE3E6"/>
-  <circle cx="620" cy="150" r="70" fill="#F6D98B"/>
-  <rect y="330" width="800" height="110" fill="#6FA7B0"/>
-  <rect y="440" width="800" height="160" fill="#EBD9B4"/>
-  <path d="M150 440 C160 360 170 300 190 250" stroke="#5B4B32" stroke-width="10" fill="none"/>
-  <path d="M190 250 q-60 -10 -90 30 M190 250 q50 -30 95 5 M190 250 q-20 -50 -70 -55 M190 250 q30 -55 80 -45" stroke="#2F5A41" stroke-width="14" fill="none" stroke-linecap="round"/>
-  <text x="400" y="545" text-anchor="middle" font-family="system-ui,sans-serif" font-size="22" fill="#5B6660">Replace with the real photo in Media Library</text>
-</svg>

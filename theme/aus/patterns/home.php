@@ -6,16 +6,16 @@
  * Inserter: yes
  */
 ?>
-<!-- wp:group {"align": "full", "style": {"spacing": {"padding": {"top": "var:preset|spacing|60", "bottom": "var:preset|spacing|60"}}}, "layout": {"type": "constrained", "contentSize": "820px"}} -->
-<div class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)">
+<!-- wp:cover {"url": "<?php echo esc_url( get_theme_file_uri( 'assets/photos/beach-headland.jpg' ) ); ?>", "dimRatio": 50, "overlayColor": "contrast", "minHeight": 86, "minHeightUnit": "vh", "align": "full", "className": "bfo-hero", "layout": {"type": "constrained", "contentSize": "980px"}} -->
+<div class="wp-block-cover alignfull bfo-hero" style="min-height:86vh"><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( get_theme_file_uri( 'assets/photos/beach-headland.jpg' ) ); ?>" data-object-fit="cover"/><span aria-hidden="true" class="wp-block-cover__background has-contrast-background-color has-background-dim"></span><div class="wp-block-cover__inner-container">
 <!-- wp:paragraph {"align": "center", "className": "bfo-eyebrow"} -->
 <p class="has-text-align-center bfo-eyebrow">For Brits moving to Australia</p>
 <!-- /wp:paragraph -->
 <!-- wp:heading {"textAlign": "center", "level": 1} -->
 <h1 class="wp-block-heading has-text-align-center">Moving to Australia? Skip the guesswork.</h1>
 <!-- /wp:heading -->
-<!-- wp:paragraph {"align": "center", "textColor": "muted", "fontSize": "large"} -->
-<p class="has-text-align-center has-muted-color has-text-color has-large-font-size">Real-world advice on tax, banking, work, housing and settling in, from someone who’s been through the whole move. Start with a free consultation call, no strings attached.</p>
+<!-- wp:paragraph {"align": "center", "className": "bfo-lede", "fontSize": "large"} -->
+<p class="has-text-align-center bfo-lede has-large-font-size">Real-world advice on tax, banking, work, housing and settling in, from someone who’s been through the whole move. Start with a free consultation call, no strings attached.</p>
 <!-- /wp:paragraph -->
 <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center","flexWrap":"wrap"}} -->
 <div class="wp-block-buttons">
@@ -27,8 +27,8 @@
 <!-- /wp:button -->
 </div>
 <!-- /wp:buttons -->
-</div>
-<!-- /wp:group -->
+</div></div>
+<!-- /wp:cover -->
 
 <!-- wp:group {"align": "full", "style": {"spacing": {"padding": {"top": "var:preset|spacing|30", "bottom": "var:preset|spacing|30"}}}, "layout": {"type": "constrained"}} -->
 <div class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30)">
@@ -164,6 +164,36 @@
 </div>
 <!-- /wp:group -->
 
+<!-- wp:group {"align": "full", "style": {"spacing": {"padding": {"top": "var:preset|spacing|50", "bottom": "var:preset|spacing|50"}}}, "layout": {"type": "constrained"}} -->
+<div class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--50)">
+<!-- wp:paragraph {"align": "center", "className": "bfo-eyebrow"} -->
+<p class="has-text-align-center bfo-eyebrow">Postcards from the move</p>
+<!-- /wp:paragraph -->
+<!-- wp:group {"align":"wide","className":"bfo-postcards","layout":{"type":"default"}} -->
+<div class="wp-block-group alignwide bfo-postcards">
+<!-- wp:image {"sizeSlug":"full"} -->
+<figure class="wp-block-image size-full"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/photos/postcard-fireworks.jpg' ) ); ?>" alt="New Year’s Eve fireworks over Sydney Harbour"/></figure>
+<!-- /wp:image -->
+<!-- wp:image {"sizeSlug":"full"} -->
+<figure class="wp-block-image size-full"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/photos/postcard-infinity-pool.jpg' ) ); ?>" alt="Infinity pool with palm trees at sunrise"/></figure>
+<!-- /wp:image -->
+<!-- wp:image {"sizeSlug":"full"} -->
+<figure class="wp-block-image size-full"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/photos/postcard-island-view.jpg' ) ); ?>" alt="Turquoise bay and green islands under a blue sky"/></figure>
+<!-- /wp:image -->
+<!-- wp:image {"sizeSlug":"full"} -->
+<figure class="wp-block-image size-full"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/photos/postcard-opera-sunset.jpg' ) ); ?>" alt="Sydney Opera House silhouetted at sunset"/></figure>
+<!-- /wp:image -->
+<!-- wp:image {"sizeSlug":"full"} -->
+<figure class="wp-block-image size-full"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/photos/postcard-clear-water.jpg' ) ); ?>" alt="Crystal-clear green water breaking over sand"/></figure>
+<!-- /wp:image -->
+<!-- wp:image {"sizeSlug":"full"} -->
+<figure class="wp-block-image size-full"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/photos/postcard-bay.jpg' ) ); ?>" alt="Coastal headland above a long white-sand beach"/></figure>
+<!-- /wp:image -->
+</div>
+<!-- /wp:group -->
+</div>
+<!-- /wp:group -->
+
 <!-- wp:group {"align": "full", "style": {"spacing": {"padding": {"top": "var:preset|spacing|60", "bottom": "var:preset|spacing|60"}}}, "layout": {"type": "constrained"}} -->
 <div class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)">
 <!-- wp:columns {"verticalAlignment":"center","align":"wide","style":{"spacing":{"blockGap":{"left":"var:preset|spacing|50"}}}} -->
@@ -171,7 +201,7 @@
 <!-- wp:column {"verticalAlignment":"center"} -->
 <div class="wp-block-column is-vertically-aligned-center">
 <!-- wp:image {"sizeSlug":"full","className":"bfo-photo"} -->
-<figure class="wp-block-image size-full bfo-photo"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/pack-placeholder.svg' ) ); ?>" alt="Sunny beachside suburb in Australia with cafés and palm trees"/></figure>
+<figure class="wp-block-image size-full bfo-photo"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/photos/harbour-bridge.jpg' ) ); ?>" alt="Sydney Harbour Bridge and Opera House on a clear blue day"/></figure>
 <!-- /wp:image -->
 </div>
 <!-- /wp:column -->
@@ -213,13 +243,13 @@
 </div>
 <!-- /wp:group -->
 
-<!-- wp:group {"align": "full", "style": {"spacing": {"padding": {"top": "var:preset|spacing|60", "bottom": "var:preset|spacing|60"}}}, "layout": {"type": "constrained"}, "backgroundColor": "contrast", "className": "bfo-dark"} -->
-<div class="wp-block-group alignfull bfo-dark has-contrast-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)">
+<!-- wp:cover {"url": "<?php echo esc_url( get_theme_file_uri( 'assets/photos/vivid-harbour.jpg' ) ); ?>", "dimRatio": 70, "overlayColor": "contrast", "minHeight": 60, "minHeightUnit": "vh", "align": "full", "className": "bfo-hero bfo-cta", "layout": {"type": "constrained", "contentSize": "980px"}} -->
+<div class="wp-block-cover alignfull bfo-hero bfo-cta" style="min-height:60vh"><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( get_theme_file_uri( 'assets/photos/vivid-harbour.jpg' ) ); ?>" data-object-fit="cover"/><span aria-hidden="true" class="wp-block-cover__background has-contrast-background-color has-background-dim-70 has-background-dim"></span><div class="wp-block-cover__inner-container">
 <!-- wp:heading {"textAlign": "center"} -->
 <h2 class="wp-block-heading has-text-align-center">Not sure where to start? Start with a conversation.</h2>
 <!-- /wp:heading -->
-<!-- wp:paragraph {"align": "center"} -->
-<p class="has-text-align-center">Book a free 30-minute call and we’ll figure out exactly what you need to sort, and in what order.</p>
+<!-- wp:paragraph {"align": "center", "className": "bfo-lede"} -->
+<p class="has-text-align-center bfo-lede">Book a free 30-minute call and we’ll figure out exactly what you need to sort, and in what order.</p>
 <!-- /wp:paragraph -->
 <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center","flexWrap":"wrap"}} -->
 <div class="wp-block-buttons">
@@ -228,5 +258,5 @@
 <!-- /wp:button -->
 </div>
 <!-- /wp:buttons -->
-</div>
-<!-- /wp:group -->
+</div></div>
+<!-- /wp:cover -->

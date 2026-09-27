@@ -73,7 +73,28 @@ def pattern(slug, title, body):
     with open(f"{T}/patterns/{slug}.php", "w") as f:
         f.write(f"<?php\n/**\n * Title: {title}\n * Slug: aus/{slug}\n * Categories: aus\n * Inserter: yes\n */\n?>\n{body}\n")
 
-def hero(eyebrow, title, lede, btns=None, note=""):
+def img_uri(path):
+    return f"<?php echo esc_url( get_theme_file_uri( '{path}' ) ); ?>"
+
+def cover(inner, img, dim=50, min_vh=86, cls=""):
+    import json
+    a = {"url": img_uri(img), "dimRatio": dim, "overlayColor": "contrast", "minHeight": min_vh, "minHeightUnit": "vh", "align": "full"}
+    if cls: a["className"] = cls
+    a["layout"] = {"type": "constrained", "contentSize": "980px"}
+    c = " ".join(["wp-block-cover", "alignfull"] + ([cls] if cls else []))
+    dim_cls = "" if dim == 50 else f" has-background-dim-{dim}"  # core omits the class at the default 50
+    return (f'<!-- wp:cover {json.dumps(a, ensure_ascii=False)} -->\n'
+            f'<div class="{c}" style="min-height:{min_vh}vh"><img class="wp-block-cover__image-background" alt="" src="{img_uri(img)}" data-object-fit="cover"/>'
+            f'<span aria-hidden="true" class="wp-block-cover__background has-contrast-background-color{dim_cls} has-background-dim"></span>'
+            f'<div class="wp-block-cover__inner-container">\n{inner}\n</div></div>\n<!-- /wp:cover -->')
+
+def hero(eyebrow, title, lede, btns=None, note="", img=None, min_vh=86):
+    if img:
+        parts = [p(eyebrow, cls="bfo-eyebrow", align="center")] if eyebrow else []
+        parts += [h(title, 1, "center"), p(lede, size="large", align="center", cls="bfo-lede")]
+        if btns: parts.append(buttons(btns, "center"))
+        if note: parts.append(p(note, size="small", align="center", cls="bfo-lede"))
+        return cover("\n".join(parts), img, dim=50, min_vh=min_vh, cls="bfo-hero")
     parts = []
     if eyebrow: parts.append(p(eyebrow, cls="bfo-eyebrow", align="center"))
     parts += [h(title, 1, "center"), p(lede, color="muted", size="large", align="center")]
@@ -81,7 +102,9 @@ def hero(eyebrow, title, lede, btns=None, note=""):
     if note: parts.append(p(note, color="muted", size="small", align="center"))
     return section("\n".join(parts), size="820px")
 
-def cta(title, body, label, href, pre=""):
+def cta(title, body, label, href, img=None):
+    if img:
+        return cover("\n".join([h(title, 2, "center"), p(body, align="center", cls="bfo-lede"), buttons([(label, href, False)], "center")]), img, dim=70, min_vh=60, cls="bfo-hero bfo-cta")
     return section("\n".join([h(title, 2, "center"), p(body, align="center"), buttons([(label, href, False)], "center")]), bg="contrast", cls="bfo-dark")
 
 # ---------- parts ----------
@@ -159,11 +182,26 @@ def video(src, poster, label):
 <figure class="wp-block-video alignwide bfo-video"><video controls poster="{po}" preload="none" src="{s}" playsinline></video></figure>
 <!-- /wp:video -->'''
 
+def photo(src, alt):
+    return f'''<!-- wp:image {{"sizeSlug":"full","className":"bfo-photo"}} -->
+<figure class="wp-block-image size-full bfo-photo"><img src="{img_uri(src)}" alt="{alt}"/></figure>
+<!-- /wp:image -->'''
+
+def postcards(items):
+    imgs = [f'''<!-- wp:image {{"sizeSlug":"full"}} -->
+<figure class="wp-block-image size-full"><img src="{img_uri(f)}" alt="{alt}"/></figure>
+<!-- /wp:image -->''' for f, alt in items]
+    return group("\n".join(imgs), cls="bfo-postcards", align="wide")
+
+# Stills are cut from the Aussie Aussie film. Swap for the shared-album originals when available.
+PHOTOS = "assets/photos/"
+
 # ---------- home ----------
 home = [
  hero("For Brits moving to Australia", "Moving to Australia? Skip the guesswork.",
       "Real-world advice on tax, banking, work, housing and settling in, from someone who’s been through the whole move. Start with a free consultation call, no strings attached.",
-      [("Book a free consultation", "/book/", False), ("See what’s in the Pack", "/pack/", True)]),
+      [("Book a free consultation", "/book/", False), ("See what’s in the Pack", "/pack/", True)],
+      img=PHOTOS + "beach-headland.jpg"),
  section("\n".join([p("The move, in 45 seconds", cls="bfo-eyebrow", align="center"),
    video("assets/video/highlight-film.mp4", "assets/video/highlight-film-poster.jpg", "Aussie Aussie highlight film: Sydney, beaches and islands")]), pad="30"),
  section(grid([card("Book a free call", "Tell me where you’re up to, visa, timeline, city ideas. No charge, no pressure.", "01"),
@@ -177,13 +215,18 @@ home = [
          card("Where to live", "City vs suburbs vs coastal towns, realistic rents, rental applications without local history, and choosing the right state."),
          card("Healthcare &amp; Medicare", "Enrolling in Medicare, private health cover, reciprocal agreements, and what to sort before you fly."),
          card("Making friends", "Meeting people as a newcomer, clubs and communities that actually welcome Brits, and beating the six-month wobble.")])]), bg="surface"),
+ section("\n".join([p("Postcards from the move", cls="bfo-eyebrow", align="center"),
+   postcards([(PHOTOS + "postcard-fireworks.jpg", "New Year’s Eve fireworks over Sydney Harbour"),
+              (PHOTOS + "postcard-infinity-pool.jpg", "Infinity pool with palm trees at sunrise"),
+              (PHOTOS + "postcard-island-view.jpg", "Turquoise bay and green islands under a blue sky"),
+              (PHOTOS + "postcard-opera-sunset.jpg", "Sydney Opera House silhouetted at sunset"),
+              (PHOTOS + "postcard-clear-water.jpg", "Crystal-clear green water breaking over sand"),
+              (PHOTOS + "postcard-bay.jpg", "Coastal headland above a long white-sand beach")])]), pad="50"),
  section('''<!-- wp:columns {"verticalAlignment":"center","align":"wide","style":{"spacing":{"blockGap":{"left":"var:preset|spacing|50"}}}} -->
 <div class="wp-block-columns alignwide are-vertically-aligned-center">
 <!-- wp:column {"verticalAlignment":"center"} -->
 <div class="wp-block-column is-vertically-aligned-center">
-<!-- wp:image {"sizeSlug":"full","className":"bfo-photo"} -->
-<figure class="wp-block-image size-full bfo-photo"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/pack-placeholder.svg' ) ); ?>" alt="Sunny beachside suburb in Australia with cafés and palm trees"/></figure>
-<!-- /wp:image -->
+''' + photo(PHOTOS + "harbour-bridge.jpg", "Sydney Harbour Bridge and Opera House on a clear blue day") + '''
 </div>
 <!-- /wp:column -->
 <!-- wp:column {"verticalAlignment":"center"} -->
@@ -196,7 +239,7 @@ home = [
 <!-- /wp:column -->
 </div>
 <!-- /wp:columns -->'''),
- cta("Not sure where to start? Start with a conversation.", "Book a free 30-minute call and we’ll figure out exactly what you need to sort, and in what order.", "Book your free call", "/book/"),
+ cta("Not sure where to start? Start with a conversation.", "Book a free 30-minute call and we’ll figure out exactly what you need to sort, and in what order.", "Book your free call", "/book/", img=PHOTOS + "vivid-harbour.jpg"),
 ]
 pattern("home", "Home", "\n\n".join(home))
 
@@ -233,7 +276,8 @@ pack = [
  hero("The Settle-In Pack", "Everything you need to move well, in one download",
       "Ten practical sections covering money, work, housing and life in Australia, written specifically for people moving from the UK. Work through it before you fly, or keep it on hand for your first months.",
       [("Get it free (first 50 people)", "/free/", False), ("Buy the Pack for £49", "/checkout/", True)],
-      "Our first 50 readers get the Pack free, in exchange for an honest post about it on their social channels."),
+      "Our first 50 readers get the Pack free, in exchange for an honest post about it on their social channels.",
+      img=PHOTOS + "seaplane-islands.jpg", min_vh=78),
  '<!-- wp:pattern {"slug":"aus/pack-contents"} /-->',
  section('''<!-- wp:columns {"align":"wide","style":{"spacing":{"blockGap":{"left":"var:preset|spacing|50"}}}} -->
 <div class="wp-block-columns alignwide">
@@ -260,21 +304,16 @@ pattern("pack", "The Pack page", "\n\n".join(pack))
 def stub(slug, title, eyebrow, lede, extra=""):
     pattern(slug, title, hero(eyebrow, title, lede) + ("\n\n" + section(extra, pad="40") if extra else ""))
 
-def photo(alt):
-    return f'''<!-- wp:image {{"sizeSlug":"full","className":"bfo-photo"}} -->
-<figure class="wp-block-image size-full bfo-photo"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/pack-placeholder.svg' ) ); ?>" alt="{alt}"/></figure>
-<!-- /wp:image -->'''
-
 about = [
  section("\n".join([p("About", cls="bfo-eyebrow"), h("Advice from someone who’s actually done the move", 1),
    p("I’m a Brit who made the move to Australia, and like most people, I found that the hard part wasn’t the visa. It was everything after: the tax file number, the bank that wouldn’t take my UK proof of address, the rental applications rejected for having no local history, the superannuation statements that might as well have been in code.", size="large"),
    p("Bound for Oz exists to close that gap. Not generic blog advice, specific, practical guidance on what to do, in what order, and what things really cost, for people moving from the UK specifically.", color="muted"),
-   photo("Beachside café life on the Australian coast")]), size="760px"),
+   photo(PHOTOS + "sunset-bridge.jpg", "Sydney Harbour Bridge at sunset with a ferry crossing")]), size="760px"),
  section("\n".join([h("What I believe", 2, "center"),
    grid([card("Practical over inspirational", "“Follow your dream” doesn’t open a bank account. Every session ends with concrete next steps, real numbers and real names."),
          card("Honest, not salesy", "If Australia isn’t right for your situation, I’ll say so. The free call is genuinely free, no strings, no hard sell."),
          card("Built for Brits", "Pensions, HMRC, NHS records, UK credit history, the questions only someone from the UK knows to ask.")])]), bg="surface"),
- cta("Let’s talk about your move", "Thirty minutes, free, and you’ll leave with a clear plan.", "Book your free call", "/book/"),
+ cta("Let’s talk about your move", "Thirty minutes, free, and you’ll leave with a clear plan.", "Book your free call", "/book/", img=PHOTOS + "harbour-bridge.jpg"),
 ]
 pattern("about", "About", "\n\n".join(about))
 stub("book", "Book a free call", "Free 30-minute call", "Tell me where you’re up to, visa, timeline, city ideas. No charge, no pressure.",

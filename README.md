@@ -61,6 +61,8 @@ theme/aus/           the theme (only thing you deploy besides DB + uploads)
 
 The home page highlight film lives in `theme/aus/assets/video/` (13.6 MB) and ships inside the theme zip. It only downloads when a visitor presses play. For anything much bigger, host it on YouTube or Vimeo and paste the link into the block instead.
 
+Photos live in `theme/aus/assets/photos/` (hero, postcards, section images). To upgrade them, overwrite each file with a higher-res version of the same name, ideally 2400 px wide for heroes and JPEG around 80% quality.
+
 ## Changing copy
 
 All text lives in `tools/build-patterns.py`. Edit it, run `python3 tools/build-patterns.py`, and the theme patterns regenerate. After launch, edit in WP Admin instead.

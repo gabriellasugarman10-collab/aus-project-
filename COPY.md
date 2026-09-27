@@ -16,6 +16,7 @@ Where copy lives: `theme/aus/patterns/*.php`. Once it's on WordPress, Jordan can
 | Pack intro | "Each **guide** is the actual step-by-step process…" | "Each **section** is…" | Same |
 | Pack price card | "**8** practical guides & checklists" | "**10** practical sections & checklists" | Same |
 | Home | — | New video section under the hero, labelled "**The move, in 45 seconds**" | New copy, approve or replace |
+| Home | — | New photo strip labelled "**Postcards from the move**" | New copy, approve or replace |
 | About | "Not generic blog advice **,** specific…" | "Not generic blog advice, specific…" | Stray space removed. The original was probably a dash ("advice — specific"). Pick one |
 
 ## Worth a second look
@@ -34,5 +35,5 @@ Where copy lives: `theme/aus/patterns/*.php`. Once it's on WordPress, Jordan can
 | `/book/` | Booking link (Calendly or Cal.com, both free) to embed |
 | `/checkout/` | Payment provider. Options: Stripe Payment Link, Lemon Squeezy (handles UK/EU VAT) or WooCommerce |
 | `/free/` | Sign-up form for the first 50, and how the post-for-pack deal is tracked |
-| Photos | 2 real photos (home "Settle-In Pack" section and About) to replace the placeholder illustration |
+| Photos | All site photos are **stills cut from the Aussie Aussie film** (1280 px, so slightly soft on big screens). Swap in the full-res originals from the shared album / DaVinci Resolve exports: same filenames in `theme/aus/assets/photos/`, no code changes. Frames showing strangers' faces were left out on purpose. |
 | Legal | Privacy policy and terms (required once you collect emails or payments) |

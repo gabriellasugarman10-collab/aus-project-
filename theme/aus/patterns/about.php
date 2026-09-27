@@ -21,7 +21,7 @@
 <p class="has-muted-color has-text-color">Bound for Oz exists to close that gap. Not generic blog advice, specific, practical guidance on what to do, in what order, and what things really cost, for people moving from the UK specifically.</p>
 <!-- /wp:paragraph -->
 <!-- wp:image {"sizeSlug":"full","className":"bfo-photo"} -->
-<figure class="wp-block-image size-full bfo-photo"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/pack-placeholder.svg' ) ); ?>" alt="Beachside café life on the Australian coast"/></figure>
+<figure class="wp-block-image size-full bfo-photo"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/photos/sunset-bridge.jpg' ) ); ?>" alt="Sydney Harbour Bridge at sunset with a ferry crossing"/></figure>
 <!-- /wp:image -->
 </div>
 <!-- /wp:group -->
@@ -68,13 +68,13 @@
 </div>
 <!-- /wp:group -->
 
-<!-- wp:group {"align": "full", "style": {"spacing": {"padding": {"top": "var:preset|spacing|60", "bottom": "var:preset|spacing|60"}}}, "layout": {"type": "constrained"}, "backgroundColor": "contrast", "className": "bfo-dark"} -->
-<div class="wp-block-group alignfull bfo-dark has-contrast-background-color has-background" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--60)">
+<!-- wp:cover {"url": "<?php echo esc_url( get_theme_file_uri( 'assets/photos/harbour-bridge.jpg' ) ); ?>", "dimRatio": 70, "overlayColor": "contrast", "minHeight": 60, "minHeightUnit": "vh", "align": "full", "className": "bfo-hero bfo-cta", "layout": {"type": "constrained", "contentSize": "980px"}} -->
+<div class="wp-block-cover alignfull bfo-hero bfo-cta" style="min-height:60vh"><img class="wp-block-cover__image-background" alt="" src="<?php echo esc_url( get_theme_file_uri( 'assets/photos/harbour-bridge.jpg' ) ); ?>" data-object-fit="cover"/><span aria-hidden="true" class="wp-block-cover__background has-contrast-background-color has-background-dim-70 has-background-dim"></span><div class="wp-block-cover__inner-container">
 <!-- wp:heading {"textAlign": "center"} -->
 <h2 class="wp-block-heading has-text-align-center">Let’s talk about your move</h2>
 <!-- /wp:heading -->
-<!-- wp:paragraph {"align": "center"} -->
-<p class="has-text-align-center">Thirty minutes, free, and you’ll leave with a clear plan.</p>
+<!-- wp:paragraph {"align": "center", "className": "bfo-lede"} -->
+<p class="has-text-align-center bfo-lede">Thirty minutes, free, and you’ll leave with a clear plan.</p>
 <!-- /wp:paragraph -->
 <!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center","flexWrap":"wrap"}} -->
 <div class="wp-block-buttons">
@@ -83,5 +83,5 @@
 <!-- /wp:button -->
 </div>
 <!-- /wp:buttons -->
-</div>
-<!-- /wp:group -->
+</div></div>
+<!-- /wp:cover -->
