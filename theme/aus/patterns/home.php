@@ -30,6 +30,17 @@
 </div>
 <!-- /wp:group -->
 
+<!-- wp:group {"align": "full", "style": {"spacing": {"padding": {"top": "var:preset|spacing|30", "bottom": "var:preset|spacing|30"}}}, "layout": {"type": "constrained"}} -->
+<div class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--30);padding-bottom:var(--wp--preset--spacing--30)">
+<!-- wp:paragraph {"align": "center", "className": "bfo-eyebrow"} -->
+<p class="has-text-align-center bfo-eyebrow">The move, in 45 seconds</p>
+<!-- /wp:paragraph -->
+<!-- wp:video {"align":"wide","className":"bfo-video"} -->
+<figure class="wp-block-video alignwide bfo-video"><video controls poster="<?php echo esc_url( get_theme_file_uri( 'assets/video/highlight-film-poster.jpg' ) ); ?>" preload="none" src="<?php echo esc_url( get_theme_file_uri( 'assets/video/highlight-film.mp4' ) ); ?>" playsinline></video></figure>
+<!-- /wp:video -->
+</div>
+<!-- /wp:group -->
+
 <!-- wp:group {"align": "full", "style": {"spacing": {"padding": {"top": "var:preset|spacing|40", "bottom": "var:preset|spacing|40"}}}, "layout": {"type": "constrained"}} -->
 <div class="wp-block-group alignfull" style="padding-top:var(--wp--preset--spacing--40);padding-bottom:var(--wp--preset--spacing--40)">
 <!-- wp:group {"align":"wide","className":"bfo-grid","layout":{"type":"grid","minimumColumnWidth":"20rem"}} -->

@@ -151,11 +151,21 @@ open(f"{T}/parts/footer.html", "w").write('''<!-- wp:group {"align":"full","back
 <!-- /wp:group -->
 ''')
 
+def video(src, poster, label):
+    # preload="none": nothing downloads until the visitor presses play.
+    s = f"<?php echo esc_url( get_theme_file_uri( '{src}' ) ); ?>"
+    po = f"<?php echo esc_url( get_theme_file_uri( '{poster}' ) ); ?>"
+    return f'''<!-- wp:video {{"align":"wide","className":"bfo-video"}} -->
+<figure class="wp-block-video alignwide bfo-video"><video controls poster="{po}" preload="none" src="{s}" playsinline></video></figure>
+<!-- /wp:video -->'''
+
 # ---------- home ----------
 home = [
  hero("For Brits moving to Australia", "Moving to Australia? Skip the guesswork.",
       "Real-world advice on tax, banking, work, housing and settling in, from someone who’s been through the whole move. Start with a free consultation call, no strings attached.",
       [("Book a free consultation", "/book/", False), ("See what’s in the Pack", "/pack/", True)]),
+ section("\n".join([p("The move, in 45 seconds", cls="bfo-eyebrow", align="center"),
+   video("assets/video/highlight-film.mp4", "assets/video/highlight-film-poster.jpg", "Aussie Aussie highlight film: Sydney, beaches and islands")]), pad="30"),
  section(grid([card("Book a free call", "Tell me where you’re up to, visa, timeline, city ideas. No charge, no pressure.", "01"),
                card("Get your plan", "We map the practical steps: money, work, housing and the admin most people miss.", "02"),
                card("Land prepared", "Take the Settle-In Pack with you, and check back in whenever you hit a wall.", "03")]), pad="40"),

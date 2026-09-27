@@ -15,6 +15,7 @@ Where copy lives: `theme/aus/patterns/*.php`. Once it's on WordPress, Jordan can
 | Pack hero | "**Eight** practical guides covering…" | "**Ten** practical sections covering…" | Matches the 10 sections |
 | Pack intro | "Each **guide** is the actual step-by-step process…" | "Each **section** is…" | Same |
 | Pack price card | "**8** practical guides & checklists" | "**10** practical sections & checklists" | Same |
+| Home | — | New video section under the hero, labelled "**The move, in 45 seconds**" | New copy, approve or replace |
 | About | "Not generic blog advice **,** specific…" | "Not generic blog advice, specific…" | Stray space removed. The original was probably a dash ("advice — specific"). Pick one |
 
 ## Worth a second look
@@ -23,6 +24,8 @@ Where copy lives: `theme/aus/patterns/*.php`. Once it's on WordPress, Jordan can
 - **Home, "Banking & super"**: "moving your pension the smart way". Advising on UK pension transfers is FCA-regulated. Suggest "understanding your options for your UK pension". The site disclaimer helps, but this line reads like advice.
 - **Home, "Healthcare & Medicare"** vs **Pack section 05**, "UK eligibility": both rely on the UK–Australia reciprocal health agreement. That's accurate, but link the official Services Australia page inside the pack.
 - **"Your free call is credited against the Pack"**: that needs a mechanism (a discount code after the call). Confirm it's real before launch.
+
+- **Highlight film**: confirm there are rights to the music for commercial use. A copyrighted track can get the site flagged, or muted if the video is also posted on social. If anyone speaks in it, add captions.
 
 ## Missing before launch
 

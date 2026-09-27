@@ -57,6 +57,10 @@ scripts/             setup · export · package-theme · migrate-domain
 theme/aus/           the theme (only thing you deploy besides DB + uploads)
 ```
 
+## Media
+
+The home page highlight film lives in `theme/aus/assets/video/` (13.6 MB) and ships inside the theme zip. It only downloads when a visitor presses play. For anything much bigger, host it on YouTube or Vimeo and paste the link into the block instead.
+
 ## Changing copy
 
 All text lives in `tools/build-patterns.py`. Edit it, run `python3 tools/build-patterns.py`, and the theme patterns regenerate. After launch, edit in WP Admin instead.
