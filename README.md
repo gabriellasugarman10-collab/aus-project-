@@ -44,6 +44,12 @@ All design decisions live in two places:
 
 Images go in via WP Admin → Media (so they migrate with `uploads/`), or `theme/aus/assets/` for theme-level graphics (logo, icons).
 
+## Install on a live WordPress (Hostinger etc.)
+
+1. WP Admin → Appearance → Themes → Add New → **Upload Theme** → choose `bound-for-oz-theme.zip` → Install Now.
+2. Click **Activate**. Activation creates Home, The Pack, About, Book, Checkout and Free, sets Home as the front page, and switches on pretty URLs. It's safe to repeat: existing pages are never duplicated or overwritten.
+3. Visit the site.
+
 ## Moving to the new host + domain
 
 1. **Export** locally: `make export` → `backups/<timestamp>/` with `database.sql`, `uploads.tar.gz`, `aus-theme.zip`.
