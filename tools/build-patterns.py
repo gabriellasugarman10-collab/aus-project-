@@ -174,12 +174,13 @@ open(f"{T}/parts/footer.html", "w").write('''<!-- wp:group {"align":"full","back
 <!-- /wp:group -->
 ''')
 
-def video(src, poster, label):
+def video(src, poster, label, wide=True):
     # preload="none": nothing downloads until the visitor presses play.
     s = f"<?php echo esc_url( get_theme_file_uri( '{src}' ) ); ?>"
     po = f"<?php echo esc_url( get_theme_file_uri( '{poster}' ) ); ?>"
-    return f'''<!-- wp:video {{"align":"wide","className":"bfo-video"}} -->
-<figure class="wp-block-video alignwide bfo-video"><video controls poster="{po}" preload="none" src="{s}" playsinline></video></figure>
+    attrs, cls = ('"align":"wide",', " alignwide") if wide else ("", "")
+    return f'''<!-- wp:video {{{attrs}"className":"bfo-video"}} -->
+<figure class="wp-block-video{cls} bfo-video"><video controls poster="{po}" preload="none" src="{s}" playsinline></video></figure>
 <!-- /wp:video -->'''
 
 def photo(src, alt):
@@ -308,7 +309,7 @@ about = [
  section("\n".join([p("About", cls="bfo-eyebrow"), h("Advice from someone who’s actually done the move", 1),
    p("I’m a Brit who made the move to Australia, and like most people, I found that the hard part wasn’t the visa. It was everything after: the tax file number, the bank that wouldn’t take my UK proof of address, the rental applications rejected for having no local history, the superannuation statements that might as well have been in code.", size="large"),
    p("Bound for Oz exists to close that gap. Not generic blog advice, specific, practical guidance on what to do, in what order, and what things really cost, for people moving from the UK specifically.", color="muted"),
-   photo(PHOTOS + "sunset-bridge.jpg", "Sydney Harbour Bridge at sunset with a ferry crossing")]), size="760px"),
+   video("assets/video/about-jordan.mp4", "assets/video/about-jordan-poster.jpg", "Jordan on moving to Australia and the free call", wide=False)]), size="760px"),
  section("\n".join([h("What I believe", 2, "center"),
    grid([card("Practical over inspirational", "“Follow your dream” doesn’t open a bank account. Every session ends with concrete next steps, real numbers and real names."),
          card("Honest, not salesy", "If Australia isn’t right for your situation, I’ll say so. The free call is genuinely free, no strings, no hard sell."),
