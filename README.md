@@ -71,7 +71,7 @@ theme/aus/           the theme (only thing you deploy besides DB + uploads)
 
 ## Media
 
-Videos live in `theme/aus/assets/video/` and ship inside the theme zip: the home page highlight film (13.6 MB) and Jordan's About page film, `about-jordan.mp4` (8.6 MB, 720p, captions burned in). Each only downloads when a visitor presses play. For anything much bigger, host it on YouTube or Vimeo and paste the link into the block instead.
+Videos live in `theme/aus/assets/video/` and ship inside the theme zip: the home page highlight film (13.6 MB) and Jordan's About page film, `about-jordan.mp4` (8.5 MB, 720p, captions burned in). Each only downloads when a visitor presses play. For anything much bigger, host it on YouTube or Vimeo and paste the link into the block instead.
 
 Photos live in `theme/aus/assets/photos/` (hero, postcards, section images). To upgrade them, overwrite each file with a higher-res version of the same name, ideally 2400 px wide for heroes and JPEG around 80% quality.
 
