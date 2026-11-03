@@ -1,0 +1,56 @@
+# Local WordPress stack. Mirrors a typical managed host: Apache + PHP 8.3 + MariaDB.
+services:
+  db:
+    image: mariadb:11
+    restart: unless-stopped
+    environment:
+      MARIADB_DATABASE: ${DB_NAME}
+      MARIADB_USER: ${DB_USER}
+      MARIADB_PASSWORD: ${DB_PASSWORD}
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+    volumes:
+      - db:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      retries: 20
+
+  wordpress:
+    image: wordpress:6-php8.3-apache
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "${WP_PORT}:80"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: ${DB_NAME}
+      WORDPRESS_DB_USER: ${DB_USER}
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
+      WORDPRESS_CONFIG_EXTRA: |
+        define('WP_ENVIRONMENT_TYPE', 'local');
+        define('DISALLOW_FILE_EDIT', true);
+    volumes:
+      - wp:/var/www/html
+      - ./theme/aus:/var/www/html/wp-content/themes/aus
+      - ./backups:/backups
+
+  cli:
+    image: wordpress:cli-php8.3
+    profiles: ["cli"]
+    user: "33:33"
+    depends_on: [wordpress]
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: ${DB_NAME}
+      WORDPRESS_DB_USER: ${DB_USER}
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - wp:/var/www/html
+      - ./theme/aus:/var/www/html/wp-content/themes/aus
+      - ./backups:/backups
+
+volumes:
+  db:
+  wp:

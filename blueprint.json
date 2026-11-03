@@ -1,0 +1,33 @@
+{
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "meta": {
+    "title": "Bound for Oz",
+    "description": "Instant browser preview of the Bound for Oz theme with all pages created.",
+    "author": "Bound for Oz"
+  },
+  "landingPage": "/",
+  "preferredVersions": { "php": "8.3", "wp": "latest" },
+  "features": { "networking": true },
+  "login": true,
+  "steps": [
+    {
+      "step": "installTheme",
+      "themeData": {
+        "resource": "git:directory",
+        "url": "https://github.com/gabriellasugarman10-collab/aus-project-",
+        "ref": "claude/vibe-code-wordpress-migration-r4b034",
+        "refType": "branch",
+        "path": "theme/aus"
+      },
+      "options": { "activate": true }
+    },
+    {
+      "step": "setSiteOptions",
+      "options": { "blogname": "Bound for Oz", "timezone_string": "Europe/London" }
+    },
+    {
+      "step": "runPHP",
+      "code": "<?php require '/wordpress/wp-load.php';\nforeach ( get_posts( array( 'post_type' => array( 'post', 'page' ), 'numberposts' => -1, 'post_status' => 'any' ) ) as $p ) { wp_delete_post( $p->ID, true ); }\n$pages = array( 'home' => 'Home', 'pack' => 'The Pack', 'about' => 'About', 'book' => 'Book a free call', 'checkout' => 'Checkout', 'free' => 'Get the Pack free' );\n$home = 0;\nforeach ( $pages as $slug => $title ) {\n  $id = wp_insert_post( array( 'post_type' => 'page', 'post_status' => 'publish', 'post_name' => $slug, 'post_title' => $title, 'post_content' => '<!-- wp:pattern {\"slug\":\"aus/' . $slug . '\"} /-->', 'meta_input' => array( '_wp_page_template' => 'page-no-title' ) ) );\n  if ( 'home' === $slug ) { $home = $id; }\n}\nupdate_option( 'show_on_front', 'page' );\nupdate_option( 'page_on_front', $home );\nupdate_option( 'permalink_structure', '/%postname%/' );\nflush_rewrite_rules();\n"
+    }
+  ]
+}
