@@ -20,9 +20,9 @@
 <!-- wp:paragraph {"textColor": "muted"} -->
 <p class="has-muted-color has-text-color">Bound for Oz exists to close that gap. Not generic blog advice, specific, practical guidance on what to do, in what order, and what things really cost, for people moving from the UK specifically.</p>
 <!-- /wp:paragraph -->
-<!-- wp:image {"sizeSlug":"full","className":"bfo-photo"} -->
-<figure class="wp-block-image size-full bfo-photo"><img src="<?php echo esc_url( get_theme_file_uri( 'assets/photos/sunset-bridge.jpg' ) ); ?>" alt="Sydney Harbour Bridge at sunset with a ferry crossing"/></figure>
-<!-- /wp:image -->
+<!-- wp:video {"className":"bfo-video","tracks":[{"src":"<?php echo esc_url( get_theme_file_uri( 'assets/video/about-jordan.vtt' ) ); ?>","label":"English","srcLang":"en","kind":"captions"}]} -->
+<figure class="wp-block-video bfo-video"><video controls poster="<?php echo esc_url( get_theme_file_uri( 'assets/video/about-jordan-poster.jpg' ) ); ?>" preload="none" src="<?php echo esc_url( get_theme_file_uri( 'assets/video/about-jordan.mp4' ) ); ?>" playsinline><track src="<?php echo esc_url( get_theme_file_uri( 'assets/video/about-jordan.vtt' ) ); ?>" label="English" srclang="en" kind="captions"/></video></figure>
+<!-- /wp:video -->
 </div>
 <!-- /wp:group -->
 
